@@ -68,6 +68,8 @@ capture(Message, Params0) ->
                 {tags, {[{Key, term_to_json_i(Value)} || {Key, Value} <- Tags]}};
             ({extra, Tags}) ->
                 {extra, {[{Key, term_to_json_i(Value)} || {Key, Value} <- Tags]}};
+            ({fingerprint, FingerPrints}) ->
+                {fingerprint, [term_to_json_i(Value) || Value <- FingerPrints]};
             ({Key, Value}) ->
                 {Key, term_to_json_i(Value)}
         end, Params2)
